@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coilsy: Snake Escape Puzzle | Official Developer Portal</title>
+  <meta name="description" content="Official developer portal and compliance directory for Coilsy: Snake Escape Puzzle by Bashar DigiLab. Includes Privacy Policy and IAB Authorized Sellers app-ads.txt.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090D16;
+      --card-bg: rgba(18, 24, 38, 0.85);
+      --card-border: rgba(34, 197, 94, 0.22);
+      --emerald: #10B981;
+      --emerald-glow: rgba(16, 185, 129, 0.35);
+      --emerald-light: #34D399;
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --btn-secondary-bg: #1E293B;
+      --btn-secondary-border: rgba(148, 163, 184, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(30, 41, 59, 0.5) 0%, transparent 50%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 620px;
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: 44px 36px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 999px;
+      color: var(--emerald-light);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .developer-tag {
+      font-size: 1rem;
+      color: var(--emerald-light);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .game-overview {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .overview-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--emerald);
+      margin-bottom: 10px;
+    }
+
+    .overview-text {
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center;
+    }
+
+    .feature-item {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .feature-value {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--emerald);
+      color: #064E3B;
+      box-shadow: 0 4px 18px var(--emerald-glow);
+    }
+
+    .btn-primary:hover {
+      background: var(--emerald-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--emerald-glow);
+    }
+
+    .btn-secondary {
+      background: var(--btn-secondary-bg);
+      border: 1px solid var(--btn-secondary-border);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      background: #2D3748;
+      border-color: rgba(148, 163, 184, 0.4);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+
+    footer a {
+      color: var(--emerald-light);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 30px 20px;
+      }
+      h1 {
+        font-size: 1.75rem;
+      }
+      .feature-list {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge-pill">
+      <span class="badge-dot"></span>
+      Official Game Portal
+    </div>
+
+    <h1>Coilsy: Snake Escape Puzzle</h1>
+    <div class="developer-tag">Published by Bashar DigiLab</div>
+
+    <div class="game-overview">
+      <div class="overview-title">About the Game</div>
+      <p class="overview-text">
+        Slither and untangle! Coilsy is a relaxing 3D logic puzzle game where players tap colorful snakes in the correct sequence to guide them safely out of dense grids without collisions. Master increasingly intricate layouts, plan your escape routes, and conquer handcrafted puzzles.
+      </p>
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-value">200+</span>
+          Levels
+        </div>
+        <div class="feature-item">
+          <span class="feature-value">3</span>
+          Biomes
+        </div>
+        <div class="feature-item">
+          <span class="feature-value">Daily 5</span>
+          Challenges
+        </div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <a class="btn btn-primary" href="https://husnimubarak0987-hue.github.io/Coilsy_privacypolicy/">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Privacy Policy
+      </a>
+      <a class="btn btn-secondary" href="https://husnimubarak0987-hue.github.io/app-ads.txt">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        app-ads.txt (Authorized Sellers)
+      </a>
+    </div>
+
+    <footer>
+      &copy; 2026 Bashar DigiLab &bull; Application ID: <code>com.coilsy.puzzle</code><br>
+      Official Support & Contact: <a href="mailto:contactme.bashar@gmail.com">contactme.bashar@gmail.com</a>
+    </footer>
+  </div>
+</body>
+</html>
